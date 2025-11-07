@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SFTN</title>
+<style>
+/* نفس التنسيق مالك بالضبط */
+#loco , #title{
+    font-weight: bolder;
+    text-shadow: 0px 2px 5px white;
+    color:rgb(0, 255, 255);
+}
+.choices{
+    z-index: 3;
+    color: #ffffffff;
+    border-color: rgb(255, 255, 255);
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: rgb(0, 28, 88);
+    border-bottom: none;
+}
+#choice4 {
+    z-index: 3;
+    color: #ffffffff;
+    border-color: rgb(255, 255, 255);
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: rgb(0, 28, 88);
+    border-top: none;
+}
+*{ user-select: none; }
+#choice1{ color: blue; }  
+#save, #search{
+    box-shadow: 0px 2px 5px white;
+    color: #ffffffff;
+    width: 30%;
+    margin-top: 10%;
+    height: 60px;
+    border-color: blue;
+    background-color: blue;
+}
+#divnames h1 { color: #ffffffff; }
+#divnames h2{
+    border: #000 2px solid;
+    background-color: #ffffffff;
+    color: blue;
+    margin: 0 5%;
+    text-shadow: 1px 1px 5px blue;
+}
+.text { background-color: rgb(0, 132, 255); }
+#divsave , #divdevel{
+    height:65vh;
+    border: #ffffffff solid 2px;
+    background-color: rgb(0, 28, 88);
+}
+#divdevel h1 , h2 { text-decoration:underline; }
+#divdevel {
+    overflow-y: auto;
+    font-weight: bolder;
+}
+#divdevel h2{ color: rgb(0, 226, 207); }
+#divdevel span{ color: aqua; }
+#divdevel p{ color: white; font-weight: bolder; }
+#divnames{
+    text-align: center;
+    overflow: auto;
+    display: none;
+    width: 100%;
+    height:65vh;
+    border: #ffffffff solid 2px;
+    background-color: rgb(0, 28, 88);
+}
+#write, #rsearch{
+    width: 80%;
+    height: 50px;
+    background-color: black;
+    border:none;
+    color: #ffffffff;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: 0px 2px 5px white;
+}
+#lang, #lang2{
+    padding: 5px;
+    margin: 5px;
+    width: 53%;
+    background-color: rgb(0, 177, 177);
+    color: #ffffffff;
+}
+#names{ padding: 10px; display: inline-block; border-radius: 10px; height: 50px; width: 53%; }
+button { border-style: solid; }
+body{ background-color: rgb(0, 28, 88); text-align: center; }
+</style>
+</head>
+<body>
+<h1 id="title"><b><big>welcome to <br><span id="loco">SFTN</span></big></b></h1>
+
+<button id="choice3" class="choices" onclick="choice('divnames','choice3','divsave','divsearch','choice1','choice2','divdevel','choice4')">All names</button>
+<button id="choice1" class="choices" onclick="choice('divsave','choice1','divsearch','divnames','choice2','choice3','divdevel','choice4')">Save names</button>
+<button id="choice2" class="choices" onclick="choice('divsearch','choice2','divsave','divnames','choice1','choice3','divdevel','choice4')">Search names</button>
+
+<div id="divsave">
+<br><br><br><br>
+<label style="color: white;">Enter a name to save it <br>
+<input type="text" id="write"><br>
+<button id="save" onclick="c()">Saving</button>
+</label>
+</div>
+
+<div id="divsearch" style="display:none;">
+<br><br><br><br>
+<label style="color: white;">Enter a name to search it <br>
+<input type="search" id="rsearch">
+<button id="search">Searching</button><br>
+<div id="names"></div>
+</label>
+</div>
+
+<div id="divnames">
+    <h1>you don't have the names now</h1>
+</div>
+
+<div id="divdevel" style="display:none; overflow:auto;">
+<button id="lang" onclick="gg()">Arabic</button>
+<button id="lang2" onclick="ff()">English</button>
+
+<div id="eng">
+<h1 style="color:aqua;">Developer</h1>
+<h2>The Biography</h2>
+<p>Hi, My name's <span>Abd Alreda</span>. I am <span>12 years old</span>. I am from <span>Basra, Iraq</span>.</p>
+</div>
+
+<div id="arabic" style="display:none; direction:rtl;">
+<h1 style="color:aqua;">المبرمج</h1>
+<h2>السيرة الذاتية</h2>
+<p>اسمي <span>عبد الرضا</span>، عمري <span>12 سنة</span> وأعيش في <span>البصرة</span>.</p>
+</div>
+</div>
+
+<button id="choice4" class="choices" onclick="choice('divdevel','choice4','divnames','divsave','choice1','choice2','divsearch','choice3')">All developers</button>
+
+<script>
+function choice(my, that, you1, you2, you11, bbbb, bvb, vvvv){
+    document.getElementById(my).style.display="block";
+    document.getElementById(that).style.color="blue";
+    document.getElementById(you1).style.display="none";
+    document.getElementById(you2).style.display="none";
+    document.getElementById(you11).style.color="white";
+    document.getElementById(bbbb).style.color="white";   
+    document.getElementById(bvb).style.display="none";
+    document.getElementById(vvvv).style.color="white";
+}
+
+function gg(){
+    document.getElementById("eng").style.display="none";
+    document.getElementById("arabic").style.display='block';
+}
+function ff(){
+    document.getElementById("eng").style.display="block";
+    document.getElementById("arabic").style.display='none';
+}
+
+let h = [];
+
+function del(){
+    let x = confirm("Are you deleting your names?");
+    if (x){
+        localStorage.removeItem("namesall");
+        h = [];
+        document.getElementById("divnames").innerHTML = `<h1>you don't have the names now</h1>`;
+    }
+}
+
+if (localStorage.getItem("namesall")){
+    h = JSON.parse(localStorage.getItem("namesall"));
+    document.getElementById("divnames").innerHTML = `
+        <button onclick="del()" style="width:100%;background-color:aqua;color:red;border-color:aqua;display:block;">DELETE</button>
+        <h2>${h.join('</h2><h2>')}</h2>
+    `;
+}
+
+function c(){
+    const val = document.getElementById("write").value.trim();
+    if (!val) return;
+    if (h.includes(val)){
+        alert("Name already exists!");
+    } else {
+        h.push(val);
+        localStorage.setItem("namesall", JSON.stringify(h));
+        document.getElementById("divnames").innerHTML = `
+            <button onclick="del()" style="width:100%;background-color:aqua;color:red;border-color:aqua;display:block;">DELETE</button>
+            <h2>${h.join('</h2><h2>')}</h2>
+        `;
+    }
+    document.getElementById("write").value = "";
+}
+
+document.getElementById("write").addEventListener("keydown", (e)=>{
+    if(e.key.toLowerCase() == "enter"){ c(); }
+});
+
+function s(){
+    let gg = document.getElementById("rsearch").value.trim();
+    let c = h.filter(z => z.includes(gg));
+    if (gg === "") {
+        document.querySelector("#names").innerHTML = ``;
+    } else if (c.length != 0) {
+        document.querySelector("#names").innerHTML = `<span>${c.join(" - ")}</span>`;
+    } else {
+        document.querySelector("#names").innerHTML = `<h1 style="color:red;">X</h1>`;
+    }
+}
+document.getElementById("rsearch").addEventListener("input", s);
+</script>
+</body>
+  </html>
